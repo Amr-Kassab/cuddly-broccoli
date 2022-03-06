@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     Rigidbody rb;
     Transform tr; 
     AudioSource audioo;
+    [SerializeField] AudioClip mainengine;
 
     [SerializeField] private float velocity = 2000f;
     [SerializeField] private float rotation = 100f;
@@ -34,7 +35,7 @@ public class Movement : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * velocity * Time.deltaTime);
             if (!audioo.isPlaying)
             {
-                audioo.Play();
+                audioo.PlayOneShot(mainengine);
             }
         }
         else

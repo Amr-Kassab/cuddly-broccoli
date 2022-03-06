@@ -6,7 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class CollisionDetector : MonoBehaviour
 {
-    private float delayTime = 1.5f;
+    private float delayTime = 5f;
+    [SerializeField] AudioClip success;
+    [SerializeField] AudioClip crash;
+
+    AudioSource audioo;
+ void Start()
+{
+    audioo = GetComponent<AudioSource>();
+}
  void OnCollisionEnter(Collision other)
 {
     switch(other.gameObject.tag)
@@ -32,6 +40,7 @@ public class CollisionDetector : MonoBehaviour
 
     private void StartSuccessSequences()
     {
+        audioo.PlayOneShot(success);
         GetComponent<Movement>().enabled=false; 
         Invoke("LoadNextLevel", delayTime);
     }
@@ -54,6 +63,7 @@ void LoadNextLevel()
 
 void startcrashsequences()
 {
+    audioo.PlayOneShot(crash);
     GetComponent<Movement>().enabled=false;
     Invoke("ReloadLevel", delayTime);
 }

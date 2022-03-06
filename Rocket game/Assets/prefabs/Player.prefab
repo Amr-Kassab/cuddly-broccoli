@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPad: {fileID: 0}
+  mainengine: {fileID: 8300000, guid: 0410a371b41865d4ca6e9cd589dbb757, type: 3}
   velocity: 2000
   rotation: 100
 --- !u!54 &7703941827021399898
@@ -238,3 +239,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d0fcb90287f1743980c400738068e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  success: {fileID: 8300000, guid: e6df729f67d602344a484f77bc59f1bc, type: 3}
+  crash: {fileID: 8300000, guid: 1143ce822d71eba4c8ef54da07a47ec7, type: 3}
