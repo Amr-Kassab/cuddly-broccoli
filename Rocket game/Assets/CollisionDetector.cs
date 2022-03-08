@@ -9,6 +9,7 @@ public class CollisionDetector : MonoBehaviour
     private float delayTime = 5f;
     [SerializeField] AudioClip success;
     [SerializeField] AudioClip crash;
+    bool isTransitioning = false;
 
     AudioSource audioo;
  void Start()
@@ -17,29 +18,34 @@ public class CollisionDetector : MonoBehaviour
 }
  void OnCollisionEnter(Collision other)
 {
+    if (!isTransitioning)
+    {
     switch(other.gameObject.tag)
     {
-        case "friendly":
-            Debug.Log("This object is friendly");
-            break;
-        case "obstacle":
-            startcrashsequences();
-            break;
-        case "Finish":
-            Debug.Log("congrates, yo, you finished!");
-            StartSuccessSequences();
-            break;
-        case "Fuel":
-            Debug.Log("you've picked up fuel");
-            break;
-        default:
-            startcrashsequences();
-            break;
+
+            case "friendly":
+                Debug.Log("This object is friendly");
+                break;
+            case "obstacle":
+                startcrashsequences();
+                break;
+            case "Finish":
+                Debug.Log("congrates, yo, you finished!");
+                StartSuccessSequences();
+                break;
+            case "Fuel":
+                Debug.Log("you've picked up fuel");
+                break;
+            default:
+                startcrashsequences();
+                break;
     }    
+}
 }
 
     private void StartSuccessSequences()
     {
+        isTransitioning = true;
         audioo.PlayOneShot(success);
         GetComponent<Movement>().enabled=false; 
         Invoke("LoadNextLevel", delayTime);
@@ -63,6 +69,7 @@ void LoadNextLevel()
 
 void startcrashsequences()
 {
+    isTransitioning = true;
     audioo.PlayOneShot(crash);
     GetComponent<Movement>().enabled=false;
     Invoke("ReloadLevel", delayTime);

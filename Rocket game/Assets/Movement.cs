@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float velocity = 2000f;
     [SerializeField] private float rotation = 100f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +66,7 @@ public class Movement : MonoBehaviour
 
         private void AdjustStartingPosition()
     {
-        transform.position = launchPad.transform.position + new Vector3(0, 9.9f, 0);
+        transform.position = launchPad.transform.position + new Vector3(0, 1.84f, 0);
     }
 
 }
